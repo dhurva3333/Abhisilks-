@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF‑8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,106 +16,92 @@
       width: 250px; text-align: center; transition: transform .3s;
       cursor: pointer;
     }
-    .category:hover { transform: scale(1.05); }
+    .category:hover { transform: scale(1.05); }.saree-details {
+  width: 100%;
+  max-width: 800px;
+  background: #fff;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+.saree-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+.btn-order {
+  display: inline-block;
+  background: #25D366;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1em;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn-order i { margin-right: 8px; }
 
-    .saree-details {
-      width: 100%;
-      max-width: 800px;
-      background: #fff;
-      padding: 20px;
-      margin: 20px auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    .saree-img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 6px;
-      margin-bottom: 12px;
-    }
-    .btn-order {
-      display: inline-block;
-      background: #25D366;
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      font-size: 1em;
-      border-radius: 6px;
-      cursor: pointer;
-      text-decoration: none;
-    }
-    .btn-order i { margin-right: 8px; }
+footer {
+  background: #333; color: #fff;
+  padding: 15px; text-align: center;
+}
+.social-icons a {
+  margin: 0 10px;
+  color: #fff;
+  font-size: 22px;
+  text-decoration: none;
+  transition: color .3s;
+}
+.social-icons a:hover { color: #00aaff; }
 
-    footer {
-      background: #333; color: #fff;
-      padding: 15px; text-align: center;
-    }
-    .social-icons a {
-      margin: 0 10px;
-      color: #fff;
-      font-size: 22px;
-      text-decoration: none;
-      transition: color .3s;
-    }
-    .social-icons a:hover { color: #00aaff; }
+.saree-section { display: none; flex-direction: column; align-items: center; }
 
-    /* Hide saree section initially */
-    #narayanapet-section { display: none; flex-direction: column; align-items: center; }
   </style>
 </head>
-<body>
-
-  <header>
+<body>  <header>
     <div class="logo">
       <img src="logo.png" alt="Abhi Silks Logo">
     </div>
-    <h1>Abhi Silks – Fashion &amp; Elegance</h1>
-  </header>
-
-  <div class="categories">
-    <div class="category" onclick="showSaree('narayanapet')">
-      <h3>Narayanapet Sarees</h3>
-    </div>
-  </div>
-
-  <!-- Narayanapet Saree Section -->
-  <div id="narayanapet-section" class="saree-section">
+    <h1>Abhi Silks – Fashion & Elegance</h1>
+  </header>  <div class="categories">
+    <div class="category" onclick="showSaree('narayanapet')"><h3>Narayanapet Sarees</h3></div>
+    <div class="category" onclick="showSaree('kanchipuram')"><h3>Kanchipuram Sarees</h3></div>
+    <div class="category" onclick="showSaree('uppada')"><h3>Uppada Sarees</h3></div>
+    <div class="category" onclick="showSaree('pochampalli')"><h3>Pochampalli Sarees</h3></div>
+    <div class="category" onclick="showSaree('mangalgiri')"><h3>Mangalgiri Sarees</h3></div>
+    <div class="category" onclick="showSaree('ikkath')"><h3>Ikkath Sarees</h3></div>
+  </div>  <div id="narayanapet-section" class="saree-section">
     <div class="saree-details">
       <h2>Narayanapet Sarees Collection</h2>
-      <!-- Display all 6 uploaded saree images -->
-      <img class="saree-img" src="images/narayanapet-saree-1.jpg" alt="Narayanapet Saree 1">
-      <img class="saree-img" src="images/narayanapet-saree-2.jpg" alt="Narayanapet Saree 2">
-      <img class="saree-img" src="images/narayanapet-saree-3.jpg" alt="Narayanapet Saree 3">
-      <img class="saree-img" src="images/narayanapet-saree-4.jpg" alt="Narayanapet Saree 4">
-      <img class="saree-img" src="images/narayanapet-saree-5.jpg" alt="Narayanapet Saree 5">
-      <img class="saree-img" src="images/narayanapet-saree-6.jpg" alt="Narayanapet Saree 6">
+      <img class="saree-img" src="images/narayanapet/saree-1.jpg" alt="Narayanapet Saree 1">
+      <img class="saree-img" src="images/narayanapet/saree-2.jpg" alt="Narayanapet Saree 2">
       <br>
-      <a class="btn-order" href="https://wa.me/9440777070?text=Hi%20Abhi%20Silks,%20I%20want%20to%20order%20a%20Narayanapet%20saree" target="_blank">
+      <a class="btn-order" href="https://wa.me/919440777070?text=Hi%20Abhi%20Silks,%20I%20want%20to%20order%20a%20Narayanapet%20saree" target="_blank">
         <i class="fab fa-whatsapp"></i> Order on WhatsApp
       </a>
     </div>
-  </div>
-
-  <footer>
+  </div>  <footer>
     <div class="social-icons">
-      <a href="https://wa.me/9440777070" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://wa.me/919440777070" target="_blank"><i class="fab fa-whatsapp"></i></a>
       <a href="https://www.instagram.com/abhisilks_sarees/" target="_blank"><i class="fab fa-instagram"></i></a>
       <a href="https://maps.app.goo.gl/6CJQGkyZEMy3nqtV7" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
       <a href="https://www.youtube.com/@abhisilks3684" target="_blank"><i class="fab fa-youtube"></i></a>
       <a href="https://www.facebook.com/AbhisilksOnline?mibextid=ZbWKwL" target="_blank"><i class="fab fa-facebook-f"></i></a>
     </div>
-  </footer>
-
-  <script>
+  </footer>  <script>
     function showSaree(type) {
-      if (type === 'narayanapet') {
-        const section = document.getElementById('narayanapet-section');
-        section.style.display = 'flex';
-        window.scrollTo({ top: section.offsetTop - 40, behavior: 'smooth' });
+      const sections = document.querySelectorAll('.saree-section');
+      sections.forEach(section => section.style.display = 'none');
+
+      const selectedSection = document.getElementById(`${type}-section`);
+      if (selectedSection) {
+        selectedSection.style.display = 'flex';
+        window.scrollTo({ top: selectedSection.offsetTop - 40, behavior: 'smooth' });
       }
     }
-  </script>
-
-</body>
+  </script></body>
 </html>
