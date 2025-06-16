@@ -10,7 +10,6 @@
       font-family: Arial, sans-serif;
       margin: 0;
       background: #f4f4f4;
-      color: #333;
     }
 
     header {
@@ -21,32 +20,32 @@
     }
 
     .logo img {
-      width: 200px;
-      height: auto;
+      width: 180px;
     }
 
     h1 {
       margin: 10px 0;
-      font-size: 2em;
+      font-size: 1.8em;
     }
 
     .categories {
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
-      margin: 30px 0;
+      justify-content: center;
+      padding: 20px;
+      transition: all 0.5s ease-in-out;
     }
 
     .category {
       background: #fff;
-      padding: 20px;
-      margin: 15px;
+      padding: 15px;
+      margin: 12px;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      width: 250px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 220px;
       text-align: center;
-      transition: transform .3s;
       cursor: pointer;
+      transition: transform 0.3s;
     }
 
     .category:hover {
@@ -55,58 +54,62 @@
 
     .saree-section {
       display: none;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 30px;
+      padding: 30px;
+      animation: fadeIn 0.6s ease-in;
     }
 
-    .saree-details {
-      width: 100%;
-      max-width: 1100px;
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .saree-details h2 {
       text-align: center;
+      margin-bottom: 20px;
     }
 
     .saree-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
-      margin-top: 20px;
     }
 
     .saree-card {
       background: #fff;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      padding: 15px;
+      padding: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       text-align: center;
     }
 
     .saree-img {
       width: 100%;
-      height: auto;
       border-radius: 6px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .btn-order {
-      display: inline-block;
       background: #25D366;
       color: white;
       border: none;
-      padding: 10px 16px;
-      font-size: 0.95em;
-      border-radius: 6px;
-      cursor: pointer;
+      padding: 10px 14px;
+      border-radius: 5px;
       text-decoration: none;
-      margin-top: 5px;
+      display: inline-block;
     }
 
     .btn-order i {
       margin-right: 6px;
+    }
+
+    .back-btn {
+      background: #555;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      display: inline-block;
     }
 
     footer {
@@ -117,36 +120,14 @@
     }
 
     .social-icons a {
-      margin: 0 10px;
       color: #fff;
-      font-size: 22px;
+      margin: 0 10px;
+      font-size: 20px;
       text-decoration: none;
-      transition: color .3s;
     }
 
-    .social-icons a:hover {
-      color: #00aaff;
-    }
-
-    .sub-category-btns {
-      margin: 20px auto;
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .sub-category-btns button {
-      background: #eee;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 6px;
-      font-size: 1em;
-      cursor: pointer;
-    }
-
-    .sub-category-btns button:hover {
-      background: #ddd;
+    .hidden {
+      display: none !important;
     }
   </style>
 </head>
@@ -156,102 +137,27 @@
     <div class="logo">
       <img src="logo.png" alt="Abhi Silks Logo"/>
     </div>
-    <h1>Abhi Silks – Fashion &amp; Elegance</h1>
+    <h1>Abhi Silks – Fashion & Elegance</h1>
   </header>
 
-  <div class="categories">
-    <div class="category" onclick="showSaree('ikkat-silk-sarees')">
-      <h3>Ikkat Silk Sarees</h3>
-    </div>
-    <div class="category" onclick="showSaree('kanchi-cotton-sarees')">
-      <h3>Kanchi Cotton Sarees</h3>
-    </div>
-    <div class="category" onclick="showSaree('kanchipuram-silk-sarees')">
-      <h3>Kanchipuram Silk Sarees</h3>
-    </div>
-    <div class="category" onclick="showSaree('mangalgari-cotton-silk-sarees')">
-      <h3>Mangalgari Cotton Silk Sarees</h3>
-    </div>
-    <div class="category" onclick="showSaree('narayanpet')">
-      <h3>Narayanpet</h3>
-    </div>
-    <div class="category" onclick="showSaree('pochampalli-cotton-silk-sarees')">
-      <h3>Pochampalli Cotton Silk Sarees</h3>
-    </div>
-    <div class="category" onclick="showSaree('pochampalli-soft-silk-sarees')">
-      <h3>Pochampalli Soft Silk Sarees</h3>
-    </div>
-    <div class="category" onclick="showSaree('pure-cotton-sarees')">
-      <h3>Pure Cotton Sarees</h3>
-    </div>
-    <div class="category" onclick="showSaree('uppada-soft-silk-sarees')">
-      <h3>Uppada Soft Silk Sarees</h3>
-    </div>
+  <!-- Category Grid -->
+  <div class="categories" id="categoryScreen">
+    <div class="category" onclick="openCategory('ikkat-silk-sarees')">Ikkat Silk Sarees</div>
+    <div class="category" onclick="openCategory('kanchi-cotton-sarees')">Kanchi Cotton Sarees</div>
+    <div class="category" onclick="openCategory('kanchipuram-silk-sarees')">Kanchipuram Silk Sarees</div>
+    <div class="category" onclick="openCategory('mangalgari-cotton-silk-sarees')">Mangalgari Cotton Silk Sarees</div>
+    <div class="category" onclick="openCategory('narayanpet-sarees')">Narayanpet Sarees</div>
+    <div class="category" onclick="openCategory('pochampalli-cotton-silk-sarees')">Pochampalli Cotton Silk Sarees</div>
+    <div class="category" onclick="openCategory('pochampalli-soft-silk-sarees')">Pochampalli Soft Silk Sarees</div>
+    <div class="category" onclick="openCategory('pure-cotton-sarees')">Pure Cotton Sarees</div>
+    <div class="category" onclick="openCategory('uppada-soft-silk-sarees')">Uppada Soft Silk Sarees</div>
   </div>
 
-  <div id="narayanpet" class="saree-section">
-    <div class="sub-category-btns">
-      <button onclick="showSaree('narayanpet-sarees')">Narayanpet Sarees</button>
-      <button onclick="showSaree('narayanpet-cotton-dress-material')">Narayanpet Cotton Dress Material</button>
-    </div>
+  <!-- Product Section -->
+  <div class="saree-section" id="productScreen">
+    <div class="back-btn" onclick="goBack()">← Back to Categories</div>
+    <div class="saree-details" id="productContent"></div>
   </div>
-
-  <script>
-    const categories = [
-      'ikkat-silk-sarees',
-      'kanchi-cotton-sarees',
-      'kanchipuram-silk-sarees',
-      'mangalgari-cotton-silk-sarees',
-      'narayanpet-sarees',
-      'narayanpet-cotton-dress-material',
-      'pochampalli-cotton-silk-sarees',
-      'pochampalli-soft-silk-sarees',
-      'pure-cotton-sarees',
-      'uppada-soft-silk-sarees'
-    ];
-
-    window.onload = () => {
-      const body = document.querySelector('body');
-      categories.forEach(cat => {
-        const title = cat.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-        const section = document.createElement('div');
-        section.className = 'saree-section';
-        section.id = cat;
-
-        let galleryHTML = '';
-        for (let i = 1; i <= 6; i++) {
-          const imgPath = `images/${cat}/${i}.jpg`;
-          const waLink = `https://wa.me/919440777070?text=Hi%20Abhi%20Silks,%20I%20want%20to%20order%20this%20${title}%20saree:%20${encodeURIComponent(imgPath)}`;
-          galleryHTML += `
-            <div class="saree-card">
-              <img class="saree-img" src="${imgPath}" alt="${title} Saree ${i}">
-              <a class="btn-order" href="${waLink}" target="_blank">
-                <i class="fab fa-whatsapp"></i> Order on WhatsApp
-              </a>
-            </div>`;
-        }
-
-        section.innerHTML = `
-          <div class="saree-details">
-            <h2>${title}</h2>
-            <div class="saree-gallery">
-              ${galleryHTML}
-            </div>
-          </div>`;
-
-        body.insertBefore(section, document.querySelector('footer'));
-      });
-    };
-
-    function showSaree(type) {
-      document.querySelectorAll('.saree-section').forEach(sec => sec.style.display = 'none');
-      const section = document.getElementById(type);
-      if (section) {
-        section.style.display = 'flex';
-        window.scrollTo({ top: section.offsetTop - 40, behavior: 'smooth' });
-      }
-    }
-  </script>
 
   <footer>
     <div class="social-icons">
@@ -262,6 +168,42 @@
       <a href="https://www.facebook.com/AbhisilksOnline?mibextid=ZbWKwL" target="_blank"><i class="fab fa-facebook-f"></i></a>
     </div>
   </footer>
+
+  <script>
+    function openCategory(categoryId) {
+      // Hide main screen and show product screen
+      document.getElementById('categoryScreen').classList.add('hidden');
+      document.getElementById('productScreen').style.display = 'block';
+
+      // Capitalize and format title
+      const title = categoryId.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+
+      // Generate gallery
+      let gallery = '';
+      for (let i = 1; i <= 6; i++) {
+        const imgPath = `images/${categoryId}/${i}.jpg`;
+        const waLink = `https://wa.me/919440777070?text=Hi%20Abhi%20Silks,%20I%20want%20to%20order%20this%20${title}:%20${encodeURIComponent(imgPath)}`;
+        gallery += `
+          <div class="saree-card">
+            <img class="saree-img" src="${imgPath}" alt="${title} Saree ${i}">
+            <a class="btn-order" href="${waLink}" target="_blank">
+              <i class="fab fa-whatsapp"></i> Order on WhatsApp
+            </a>
+          </div>`;
+      }
+
+      document.getElementById('productContent').innerHTML = `
+        <h2>${title}</h2>
+        <div class="saree-gallery">${gallery}</div>
+      `;
+    }
+
+    function goBack() {
+      document.getElementById('productScreen').style.display = 'none';
+      document.getElementById('categoryScreen').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
 
 </body>
 </html>
