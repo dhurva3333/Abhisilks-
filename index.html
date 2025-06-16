@@ -4,159 +4,88 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Abhi Silks</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f4f4f4;
-    }
+    body { margin: 0; font-family: Arial, sans-serif; background: #f8f8f8; color: #333; }
+    header { background: #fff; text-align: center; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .logo img { width: 200px; height: auto; }
+    h1 { margin: 10px 0; }
 
-    header {
-      background: #fff;
-      text-align: center;
-      padding: 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-
-    .logo img {
-      width: 180px;
-    }
-
-    h1 {
-      margin: 10px 0;
-      font-size: 1.8em;
-    }
-
-    .categories {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 20px;
-      transition: all 0.5s ease-in-out;
-    }
-
+    .categories { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; gap: 20px; }
     .category {
-      background: #fff;
-      padding: 15px;
-      margin: 12px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      width: 220px;
-      text-align: center;
-      cursor: pointer;
-      transition: transform 0.3s;
+      background: #fff; padding: 20px; border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 220px; text-align: center;
+      cursor: pointer; transition: transform 0.3s;
     }
+    .category:hover { transform: scale(1.05); }
 
-    .category:hover {
-      transform: scale(1.05);
-    }
-
-    .saree-section {
-      display: none;
-      padding: 30px;
-      animation: fadeIn 0.6s ease-in;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .saree-details h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .saree-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-
+    .saree-gallery { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; padding: 20px; }
     .saree-card {
-      background: #fff;
-      border-radius: 10px;
-      padding: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      text-align: center;
+      background: #fff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 10px; width: 300px; text-align: center;
     }
-
-    .saree-img {
-      width: 100%;
-      border-radius: 6px;
-      margin-bottom: 10px;
-    }
+    .saree-img { width: 100%; border-radius: 8px; margin-bottom: 10px; }
 
     .btn-order {
-      background: #25D366;
-      color: white;
-      border: none;
-      padding: 10px 14px;
-      border-radius: 5px;
-      text-decoration: none;
-      display: inline-block;
+      background: #25D366; color: white; text-decoration: none;
+      padding: 10px 20px; display: inline-block; border-radius: 6px;
+      font-size: 1em; transition: background 0.3s;
     }
-
-    .btn-order i {
-      margin-right: 6px;
-    }
-
-    .back-btn {
-      background: #555;
-      color: white;
-      padding: 10px 16px;
-      border-radius: 5px;
-      margin-bottom: 20px;
-      cursor: pointer;
-      display: inline-block;
-    }
+    .btn-order:hover { background: #1ebc59; }
+    .btn-order i { margin-right: 8px; }
 
     footer {
-      background: #333;
-      color: #fff;
-      padding: 15px;
-      text-align: center;
+      background: #333; color: #fff; text-align: center; padding: 15px;
     }
-
     .social-icons a {
-      color: #fff;
-      margin: 0 10px;
-      font-size: 20px;
-      text-decoration: none;
+      color: #fff; margin: 0 10px; font-size: 20px; text-decoration: none;
     }
+    .social-icons a:hover { color: #00aaff; }
 
-    .hidden {
-      display: none !important;
+    .hidden { display: none; }
+    #productScreen h2 {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 2em;
     }
+    .back-button {
+      display: block;
+      margin: 20px auto;
+      background: #444;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .back-button:hover { background: #666; }
   </style>
 </head>
 <body>
 
   <header>
     <div class="logo">
-      <img src="logo.png" alt="Abhi Silks Logo"/>
+      <img src="logo.png" alt="Abhi Silks Logo" />
     </div>
     <h1>Abhi Silks – Fashion & Elegance</h1>
   </header>
 
-  <!-- Category Grid -->
-  <div class="categories" id="categoryScreen">
+  <div id="categoryScreen" class="categories">
     <div class="category" onclick="openCategory('ikkat-silk-sarees')">Ikkat Silk Sarees</div>
     <div class="category" onclick="openCategory('kanchi-cotton-sarees')">Kanchi Cotton Sarees</div>
     <div class="category" onclick="openCategory('kanchipuram-silk-sarees')">Kanchipuram Silk Sarees</div>
     <div class="category" onclick="openCategory('mangalgari-cotton-silk-sarees')">Mangalgari Cotton Silk Sarees</div>
     <div class="category" onclick="openCategory('narayanpet-sarees')">Narayanpet Sarees</div>
+    <div class="category" onclick="openCategory('narayanpet-cotton-dress-material')">Narayanpet Cotton Dress Material</div>
     <div class="category" onclick="openCategory('pochampalli-cotton-silk-sarees')">Pochampalli Cotton Silk Sarees</div>
     <div class="category" onclick="openCategory('pochampalli-soft-silk-sarees')">Pochampalli Soft Silk Sarees</div>
     <div class="category" onclick="openCategory('pure-cotton-sarees')">Pure Cotton Sarees</div>
     <div class="category" onclick="openCategory('uppada-soft-silk-sarees')">Uppada Soft Silk Sarees</div>
   </div>
 
-  <!-- Product Section -->
-  <div class="saree-section" id="productScreen">
-    <div class="back-btn" onclick="goBack()">← Back to Categories</div>
-    <div class="saree-details" id="productContent"></div>
+  <div id="productScreen" class="hidden">
+    <button class="back-button" onclick="goBack()">← Back to Categories</button>
+    <div id="productContent"></div>
   </div>
 
   <footer>
@@ -172,33 +101,44 @@
   <script>
     function openCategory(categoryId) {
       document.getElementById('categoryScreen').classList.add('hidden');
-      document.getElementById('productScreen').style.display = 'block';
+      document.getElementById('productScreen').classList.remove('hidden');
 
       const title = categoryId.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-      let gallery = '';
-      let loaded = 0;
+      const container = document.getElementById('productContent');
 
-      for (let i = 1; i <= 1000; i++) {
+      container.innerHTML = `<h2>${title}</h2><div class="saree-gallery" id="gallery"></div>`;
+      const gallery = document.getElementById('gallery');
+
+      for (let i = 1; i <= 99; i++) {
         const imgPath = `images/${categoryId}/${i}.jpg`;
         const waLink = `https://wa.me/919440777070?text=Hi%20Abhi%20Silks,%20I%20want%20to%20order%20this%20${title}:%20${encodeURIComponent(imgPath)}`;
 
-        gallery += `
-          <div class="saree-card">
-            <img class="saree-img" src="${imgPath}" alt="${title} Saree ${i}" onerror="this.parentElement.style.display='none'">
-            <a class="btn-order" href="${waLink}" target="_blank">
-              <i class="fab fa-whatsapp"></i> Order on WhatsApp
-            </a>
-          </div>`;
-      }
+        const card = document.createElement('div');
+        card.className = 'saree-card';
 
-      document.getElementById('productContent').innerHTML = `
-        <h2>${title}</h2>
-        <div class="saree-gallery">${gallery}</div>
-      `;
+        const img = new Image();
+        img.className = 'saree-img';
+        img.src = imgPath;
+        img.alt = `${title} Saree ${i}`;
+        img.onload = () => {
+          const button = document.createElement('a');
+          button.className = 'btn-order';
+          button.href = waLink;
+          button.target = '_blank';
+          button.innerHTML = `<i class="fab fa-whatsapp"></i> Order on WhatsApp`;
+
+          card.appendChild(img);
+          card.appendChild(button);
+          gallery.appendChild(card);
+        };
+        img.onerror = () => {
+          // silently skip if image doesn't exist
+        };
+      }
     }
 
     function goBack() {
-      document.getElementById('productScreen').style.display = 'none';
+      document.getElementById('productScreen').classList.add('hidden');
       document.getElementById('categoryScreen').classList.remove('hidden');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
