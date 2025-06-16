@@ -171,14 +171,11 @@
 
   <script>
     function openCategory(categoryId) {
-      // Hide main screen and show product screen
       document.getElementById('categoryScreen').classList.add('hidden');
       document.getElementById('productScreen').style.display = 'block';
 
-      // Capitalize and format title
       const title = categoryId.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
 
-      // Generate gallery
       let gallery = '';
       for (let i = 1; i <= 6; i++) {
         const imgPath = `images/${categoryId}/${i}.jpg`;
