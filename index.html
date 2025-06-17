@@ -53,16 +53,134 @@
     <div class="logo"><img src="logo.png" alt="Abhi Silks Logo" /></div>
     <h1>Abhi Silks – Fashion & Elegance</h1>
     <button class="login-btn" onclick="document.getElementById('loginModal').style.display='flex'">Login</button>
-  </header> 
-  <div id="categoryScreen" class="categories">
-  <div class="category" onclick="openCategory('ikkat-silk-sarees')">Ikkat Silk Sarees</div>
-  <div class="category" onclick="openCategory('kanchi-cotton-sarees')">Kanchi Cotton Sarees</div>
-  <div class="category" onclick="openCategory('kanchipuram-silk-sarees')">Kanchipuram Silk Sarees</div>
-  <div class="category" onclick="openCategory('mangalgari-cotton-silk-sarees')">Mangalgari Cotton Silk Sarees</div>
-  <div class="category" onclick="openCategory('narayanpet-sarees')">Narayanpet Sarees</div>
-  <div class="category" onclick="openCategory('narayanpet-cotton-dress-material')">Narayanpet Cotton Dress Material</div>
-  <div class="category" onclick="openCategory('pochampalli-cotton-silk-sarees')">Pochampalli Cotton Silk Sarees</div>
-  <div class="category" onclick="openCategory('pochampalli-soft-silk-sarees')">Pochampalli Soft Silk Sarees</div>
-  <div class="category" onclick="openCategory('pure-cotton-sarees')">Pure Cotton Sarees</div>
-  <div class="category" onclick="openCategory('uppada-soft-silk-sarees')">Uppada Soft Silk Sarees</div>
-</div>
+  </header>  <div id="categoryScreen" class="categories">
+    <div class="category" onclick="openCategory('ikkat-silk-sarees')">Ikkat Silk Sarees</div>
+    <div class="category" onclick="openCategory('kanchi-cotton-sarees')">Kanchi Cotton Sarees</div>
+    <div class="category" onclick="openCategory('kanchipuram-silk-sarees')">Kanchipuram Silk Sarees</div>
+    <div class="category" onclick="openCategory('mangalgari-cotton-silk-sarees')">Mangalgari Cotton Silk Sarees</div>
+    <div class="category" onclick="openCategory('narayanpet-sarees')">Narayanpet Sarees</div>
+    <div class="category" onclick="openCategory('narayanpet-cotton-dress-material')">Narayanpet Cotton Dress Material</div>
+    <div class="category" onclick="openCategory('pochampalli-cotton-silk-sarees')">Pochampalli Cotton Silk Sarees</div>
+    <div class="category" onclick="openCategory('pochampalli-soft-silk-sarees')">Pochampalli Soft Silk Sarees</div>
+    <div class="category" onclick="openCategory('pure-cotton-sarees')">Pure Cotton Sarees</div>
+    <div class="category" onclick="openCategory('uppada-soft-silk-sarees')">Uppada Soft Silk Sarees</div>
+  </div>  <div id="productScreen" class="hidden">
+    <button class="back-button" onclick="goBack()">← Back to Categories</button>
+    <div id="productContent"></div>
+  </div>  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <h3>Admin Login</h3>
+      <input type="text" id="adminUsername" placeholder="Username" style="width:100%; padding:8px; margin-bottom:10px;">
+      <input type="password" id="adminPassword" placeholder="Password" style="width:100%; padding:8px; margin-bottom:20px;">
+      <button onclick="adminLogin()" style="width:100%; padding:10px;">Login</button>
+      <button onclick="document.getElementById('loginModal').style.display='none'" style="margin-top:10px; width:100%;">Cancel</button>
+    </div>
+  </div>  <div id="adminPanel" class="hidden" style="padding:20px; background:#eee;">
+    <h2>Admin Panel</h2>
+    <div>
+      <h3>Upload Image</h3>
+      <input type="file" id="uploadInput"><br><br>
+      <button onclick="uploadImage()">Upload</button>
+    </div>
+    <div>
+      <h3>Delete Image</h3>
+      <input type="text" id="deletePath" placeholder="images/category/1.jpg" style="width:100%; padding:8px;"><br><br>
+      <button onclick="deleteImage()">Delete</button>
+    </div>
+  </div>  <footer>
+    <div class="social-icons">
+      <a href="https://wa.me/9440777070" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.instagram.com/abhisilks_sarees/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://maps.app.goo.gl/6CJQGkyZEMy3nqtV7" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
+      <a href="https://www.youtube.com/@abhisilks3684" target="_blank"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.facebook.com/AbhisilksOnline?mibextid=ZbWKwL" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    </div>
+  </footer><script>
+  const apiUrl = 'https://your-backend-url.com'; // replace with your backend URL
+
+  function openCategory(categoryId) {
+    document.getElementById('categoryScreen').classList.add('hidden');
+    document.getElementById('productScreen').classList.remove('hidden');
+    const title = categoryId.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+    const container = document.getElementById('productContent');
+    container.innerHTML = `<h2>${title}</h2><div class="saree-gallery" id="gallery"></div>`;
+    const gallery = document.getElementById('gallery');
+
+    for (let i = 1; i <= 99; i++) {
+      const imgPath = `images/${categoryId}/${i}.jpg`;
+      const waLink = `https://wa.me/919440777070?text=Hi%20Abhi%20Silks,%20I%20want%20to%20order%20this%20${title}:%20${encodeURIComponent(imgPath)}`;
+
+      const card = document.createElement('div');
+      card.className = 'saree-card';
+      const img = new Image();
+      img.className = 'saree-img';
+      img.src = imgPath;
+      img.alt = `${title} Saree ${i}`;
+      img.onload = () => {
+        const button = document.createElement('a');
+        button.className = 'btn-order';
+        button.href = waLink;
+        button.target = '_blank';
+        button.innerHTML = `<i class="fab fa-whatsapp"></i> Order on WhatsApp`;
+        card.appendChild(img);
+        card.appendChild(button);
+        gallery.appendChild(card);
+      };
+    }
+  }
+
+  function goBack() {
+    document.getElementById('productScreen').classList.add('hidden');
+    document.getElementById('categoryScreen').classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function adminLogin() {
+    const username = document.getElementById("adminUsername").value;
+    const password = document.getElementById("adminPassword").value;
+    if (username === "abhisilks" && password === "asilk@7777") {
+      alert("Login successful!");
+      document.getElementById("loginModal").style.display = "none";
+      document.getElementById("adminPanel").classList.remove("hidden");
+    } else {
+      alert("Invalid credentials.");
+    }
+  }
+
+  function uploadImage() {
+    const fileInput = document.getElementById('uploadInput');
+    const category = prompt("Enter category folder (e.g. pochampalli-soft-silk-sarees):");
+    const formData = new FormData();
+    formData.append("image", fileInput.files[0]);
+    formData.append("category", category);
+
+    fetch(`${apiUrl}/upload`, {
+      method: 'POST',
+      headers: {
+        username: 'abhisilks',
+        password: 'asilk@7777'
+      },
+      body: formData
+    })
+    .then(res => res.json())
+    .then(data => alert(data.message))
+    .catch(err => alert("Upload failed"));
+  }
+
+  function deleteImage() {
+    const path = document.getElementById('deletePath').value;
+    fetch(`${apiUrl}/delete`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        username: 'abhisilks',
+        password: 'asilk@7777'
+      },
+      body: JSON.stringify({ imagePath: path })
+    })
+    .then(res => res.json())
+    .then(data => alert(data.message))
+    .catch(err => alert("Delete failed"));
+  }
+</script></body>
+</html>
