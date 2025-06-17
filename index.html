@@ -97,37 +97,37 @@
     </div>
   </footer><script>
   const apiUrl = 'https://your-backend-url.com'; // replace with your backend URL
+// inside openCategory function function openCategory(categoryId) { document.getElementById('categoryScreen').classList.add('hidden'); document.getElementById('productScreen').classList.remove('hidden'); const title = categoryId.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()); const container = document.getElementById('productContent'); container.innerHTML = <h2>${title}</h2><div class="saree-gallery" id="gallery"></div>; const gallery = document.getElementById('gallery');
 
-  function openCategory(categoryId) {
-    document.getElementById('categoryScreen').classList.add('hidden');
-    document.getElementById('productScreen').classList.remove('hidden');
-    const title = categoryId.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-    const container = document.getElementById('productContent');
-    container.innerHTML = `<h2>${title}</h2><div class="saree-gallery" id="gallery"></div>`;
-    const gallery = document.getElementById('gallery');
+let found = false; let loadCount = 0;
 
-    for (let i = 1; i <= 99; i++) {
-      const imgPath = `images/${categoryId}/${i}.jpg`;
-      const waLink = `https://wa.me/919440777070?text=Hi%20Abhi%20Silks,%20I%20want%20to%20order%20this%20${title}:%20${encodeURIComponent(imgPath)}`;
+for (let i = 1; i <= 99; i++) { const imgPath = images/${categoryId}/${i}.jpg; const img = new Image(); img.src = imgPath; img.onload = () => { const waLink = https://wa.me/919440777070?text=Hi%20Abhi%20Silks,%20I%20want%20to%20order%20this%20${title}:%20${encodeURIComponent(imgPath)}; const card = document.createElement('div'); card.className = 'saree-card';
 
-      const card = document.createElement('div');
-      card.className = 'saree-card';
-      const img = new Image();
-      img.className = 'saree-img';
-      img.src = imgPath;
-      img.alt = `${title} Saree ${i}`;
-      img.onload = () => {
-        const button = document.createElement('a');
-        button.className = 'btn-order';
-        button.href = waLink;
-        button.target = '_blank';
-        button.innerHTML = `<i class="fab fa-whatsapp"></i> Order on WhatsApp`;
-        card.appendChild(img);
-        card.appendChild(button);
-        gallery.appendChild(card);
-      };
-    }
+img.className = 'saree-img';
+  img.alt = `${title} Saree ${i}`;
+  const button = document.createElement('a');
+  button.className = 'btn-order';
+  button.href = waLink;
+  button.target = '_blank';
+  button.innerHTML = `<i class="fab fa-whatsapp"></i> Order on WhatsApp`;
+
+  card.appendChild(img);
+  card.appendChild(button);
+  gallery.appendChild(card);
+
+  found = true;
+};
+img.onerror = () => {
+  loadCount++;
+  if (loadCount === 98 && !found) {
+    gallery.innerHTML = '<p style="text-align:center;">No sarees found in this category.</p>';
   }
+  console.warn(`Image not found: ${imgPath}`);
+};
+
+} }
+
+    
 
   function goBack() {
     document.getElementById('productScreen').classList.add('hidden');
