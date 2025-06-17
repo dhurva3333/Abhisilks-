@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -7,88 +6,81 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     body { margin: 0; font-family: Arial, sans-serif; background: #f8f8f8; color: #333; }
-    header { background: #fff; text-align: center; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    header { background: #fff; text-align: center; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: relative; }
     .logo img { width: 200px; height: auto; }
     h1 { margin: 10px 0; }
-
-    .categories { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; gap: 20px; }
-    .category {
+    .login-btn {
+      position: absolute; top: 20px; right: 20px;
+      padding: 10px 20px; background: #333; color: #fff;
+      border: none; border-radius: 6px; cursor: pointer;
+    }
+    .categories, .saree-gallery { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; gap: 20px; }
+    .category, .saree-card {
       background: #fff; padding: 20px; border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 220px; text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 220px; text-align: center;
       cursor: pointer; transition: transform 0.3s;
     }
-    .category:hover { transform: scale(1.05); }
-
-    .saree-gallery { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; padding: 20px; }
-    .saree-card {
-      background: #fff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      padding: 10px; width: 300px; text-align: center;
-    }
+    .category:hover, .saree-card:hover { transform: scale(1.05); }
     .saree-img { width: 100%; border-radius: 8px; margin-bottom: 10px; }
-
     .btn-order {
       background: #25D366; color: white; text-decoration: none;
       padding: 10px 20px; display: inline-block; border-radius: 6px;
       font-size: 1em; transition: background 0.3s;
     }
     .btn-order:hover { background: #1ebc59; }
-    .btn-order i { margin-right: 8px; }
-
-    footer {
-      background: #333; color: #fff; text-align: center; padding: 15px;
-    }
-    .social-icons a {
-      color: #fff; margin: 0 10px; font-size: 20px; text-decoration: none;
-    }
+    footer { background: #333; color: #fff; text-align: center; padding: 15px; }
+    .social-icons a { color: #fff; margin: 0 10px; font-size: 20px; text-decoration: none; }
     .social-icons a:hover { color: #00aaff; }
-
     .hidden { display: none; }
-    #productScreen h2 {
-      text-align: center;
-      margin-top: 30px;
-      font-size: 2em;
-    }
     .back-button {
-      display: block;
-      margin: 20px auto;
-      background: #444;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 6px;
-      cursor: pointer;
+      display: block; margin: 20px auto; background: #444;
+      color: #fff; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer;
     }
     .back-button:hover { background: #666; }
+    .modal {
+      display: none; position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6);
+      justify-content: center; align-items: center; z-index: 1000;
+    }
+    .modal-content {
+      background: #fff; padding: 30px; border-radius: 10px; width: 300px;
+    }
   </style>
 </head>
 <body>
-
   <header>
-    <div class="logo">
-      <img src="logo.png" alt="Abhi Silks Logo" />
-    </div>
+    <div class="logo"><img src="logo.png" alt="Abhi Silks Logo" /></div>
     <h1>Abhi Silks – Fashion & Elegance</h1>
-  </header>
-
-  <div id="categoryScreen" class="categories">
-    <div class="category" onclick="openCategory('ikkat-silk-sarees')">Ikkat Silk Sarees</div>
-    <div class="category" onclick="openCategory('kanchi-cotton-sarees')">Kanchi Cotton Sarees</div>
-    <div class="category" onclick="openCategory('kanchipuram-silk-sarees')">Kanchipuram Silk Sarees</div>
-    <div class="category" onclick="openCategory('mangalgari-cotton-silk-sarees')">Mangalgari Cotton Silk Sarees</div>
-    <div class="category" onclick="openCategory('narayanpet-sarees')">Narayanpet Sarees</div>
-    <div class="category" onclick="openCategory('narayanpet-cotton-dress-material')">Narayanpet Cotton Dress Material</div>
-    <div class="category" onclick="openCategory('pochampalli-cotton-silk-sarees')">Pochampalli Cotton Silk Sarees</div>
+    <button class="login-btn" onclick="document.getElementById('loginModal').style.display='flex'">Login</button>
+  </header>  <div id="categoryScreen" class="categories">
+    <!-- categories go here -->
     <div class="category" onclick="openCategory('pochampalli-soft-silk-sarees')">Pochampalli Soft Silk Sarees</div>
-    <div class="category" onclick="openCategory('pure-cotton-sarees')">Pure Cotton Sarees</div>
-    <div class="category" onclick="openCategory('uppada-soft-silk-sarees')">Uppada Soft Silk Sarees</div>
-  </div>
-
-  <div id="productScreen" class="hidden">
+    <!-- add more categories as needed -->
+  </div>  <div id="productScreen" class="hidden">
     <button class="back-button" onclick="goBack()">← Back to Categories</button>
     <div id="productContent"></div>
-  </div>
-
-  <footer>
+  </div>  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <h3>Admin Login</h3>
+      <input type="text" id="adminUsername" placeholder="Username" style="width:100%; padding:8px; margin-bottom:10px;">
+      <input type="password" id="adminPassword" placeholder="Password" style="width:100%; padding:8px; margin-bottom:20px;">
+      <button onclick="adminLogin()" style="width:100%; padding:10px;">Login</button>
+      <button onclick="document.getElementById('loginModal').style.display='none'" style="margin-top:10px; width:100%;">Cancel</button>
+    </div>
+  </div>  <div id="adminPanel" class="hidden" style="padding:20px; background:#eee;">
+    <h2>Admin Panel</h2>
+    <div>
+      <h3>Upload Image</h3>
+      <input type="file" id="uploadInput"><br><br>
+      <button onclick="uploadImage()">Upload</button>
+    </div>
+    <div>
+      <h3>Delete Image</h3>
+      <input type="text" id="deletePath" placeholder="images/category/1.jpg" style="width:100%; padding:8px;"><br><br>
+      <button onclick="deleteImage()">Delete</button>
+    </div>
+  </div>  <footer>
     <div class="social-icons">
       <a href="https://wa.me/9440777070" target="_blank"><i class="fab fa-whatsapp"></i></a>
       <a href="https://www.instagram.com/abhisilks_sarees/" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -96,53 +88,92 @@
       <a href="https://www.youtube.com/@abhisilks3684" target="_blank"><i class="fab fa-youtube"></i></a>
       <a href="https://www.facebook.com/AbhisilksOnline?mibextid=ZbWKwL" target="_blank"><i class="fab fa-facebook-f"></i></a>
     </div>
-  </footer>
+  </footer><script>
+  const apiUrl = 'https://your-backend-url.com'; // replace with your Render backend URL
 
-  <script>
-    function openCategory(categoryId) {
-      document.getElementById('categoryScreen').classList.add('hidden');
-      document.getElementById('productScreen').classList.remove('hidden');
+  function openCategory(categoryId) {
+    document.getElementById('categoryScreen').classList.add('hidden');
+    document.getElementById('productScreen').classList.remove('hidden');
+    const title = categoryId.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+    const container = document.getElementById('productContent');
+    container.innerHTML = `<h2>${title}</h2><div class="saree-gallery" id="gallery"></div>`;
+    const gallery = document.getElementById('gallery');
 
-      const title = categoryId.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-      const container = document.getElementById('productContent');
+    for (let i = 1; i <= 99; i++) {
+      const imgPath = `images/${categoryId}/${i}.jpg`;
+      const waLink = `https://wa.me/919440777070?text=Hi%20Abhi%20Silks,%20I%20want%20to%20order%20this%20${title}:%20${encodeURIComponent(imgPath)}`;
 
-      container.innerHTML = `<h2>${title}</h2><div class="saree-gallery" id="gallery"></div>`;
-      const gallery = document.getElementById('gallery');
-
-      for (let i = 1; i <= 99; i++) {
-        const imgPath = `images/${categoryId}/${i}.jpg`;
-        const waLink = `https://wa.me/919440777070?text=Hi%20Abhi%20Silks,%20I%20want%20to%20order%20this%20${title}:%20${encodeURIComponent(imgPath)}`;
-
-        const card = document.createElement('div');
-        card.className = 'saree-card';
-
-        const img = new Image();
-        img.className = 'saree-img';
-        img.src = imgPath;
-        img.alt = `${title} Saree ${i}`;
-        img.onload = () => {
-          const button = document.createElement('a');
-          button.className = 'btn-order';
-          button.href = waLink;
-          button.target = '_blank';
-          button.innerHTML = `<i class="fab fa-whatsapp"></i> Order on WhatsApp`;
-
-          card.appendChild(img);
-          card.appendChild(button);
-          gallery.appendChild(card);
-        };
-        img.onerror = () => {
-          // silently skip if image doesn't exist
-        };
-      }
+      const card = document.createElement('div');
+      card.className = 'saree-card';
+      const img = new Image();
+      img.className = 'saree-img';
+      img.src = imgPath;
+      img.alt = `${title} Saree ${i}`;
+      img.onload = () => {
+        const button = document.createElement('a');
+        button.className = 'btn-order';
+        button.href = waLink;
+        button.target = '_blank';
+        button.innerHTML = `<i class="fab fa-whatsapp"></i> Order on WhatsApp`;
+        card.appendChild(img);
+        card.appendChild(button);
+        gallery.appendChild(card);
+      };
     }
+  }
 
-    function goBack() {
-      document.getElementById('productScreen').classList.add('hidden');
-      document.getElementById('categoryScreen').classList.remove('hidden');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+  function goBack() {
+    document.getElementById('productScreen').classList.add('hidden');
+    document.getElementById('categoryScreen').classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function adminLogin() {
+    const username = document.getElementById("adminUsername").value;
+    const password = document.getElementById("adminPassword").value;
+    if (username === "abhisilks" && password === "asilk@7777") {
+      alert("Login successful!");
+      document.getElementById("loginModal").style.display = "none";
+      document.getElementById("adminPanel").classList.remove("hidden");
+    } else {
+      alert("Invalid credentials.");
     }
-  </script>
+  }
 
-</body>
+  function uploadImage() {
+    const fileInput = document.getElementById('uploadInput');
+    const category = prompt("Enter category folder (e.g. pochampalli-soft-silk-sarees):");
+    const formData = new FormData();
+    formData.append("image", fileInput.files[0]);
+    formData.append("category", category);
+
+    fetch(`${apiUrl}/upload`, {
+      method: 'POST',
+      headers: {
+        username: 'abhisilks',
+        password: 'asilk@7777'
+      },
+      body: formData
+    })
+    .then(res => res.json())
+    .then(data => alert(data.message))
+    .catch(err => alert("Upload failed"));
+  }
+
+  function deleteImage() {
+    const path = document.getElementById('deletePath').value;
+    fetch(`${apiUrl}/delete`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        username: 'abhisilks',
+        password: 'asilk@7777'
+      },
+      body: JSON.stringify({ imagePath: path })
+    })
+    .then(res => res.json())
+    .then(data => alert(data.message))
+    .catch(err => alert("Delete failed"));
+  }
+</script></body>
 </html>
